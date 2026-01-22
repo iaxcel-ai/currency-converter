@@ -23,9 +23,9 @@ while (true) {
       console.log(`- ${currency}`);
     }
 
-    const fromCurrency = input("Enter the currency you are converting from: ").toUpperCase();
-    const amount = parseFloat(input("\nEnter the amount you want to convert: "));
-    const toCurrency = input("Enter the currency you want to convert to: ").toUpperCase();
+    const fromCurrency = input("Currency to convert FROM: ").toUpperCase();
+    const amount = parseFloat(input("\nAmount to convert: "));
+    const toCurrency = input("Currency to convert TO: ").toUpperCase();
 
 
     if (!exchangeRates[fromCurrency] || !exchangeRates[toCurrency]) {
