@@ -1,4 +1,4 @@
-const prompt = require("prompt-sync")();
+const input = require("sync-input");
 
 console.log("Welcome to the Currency Converter!");
 
@@ -14,7 +14,7 @@ console.log("What do you want to do?");
 console.log("1. Convert Currencies");
 console.log("2. Exit program");
 
-const choice = prompt("Enter your choice (1 or 2): ");
+const choice = input("Enter your choice (1 or 2): ");
 
 if (choice === "1") {
   console.log("\nAvailable currencies:");
@@ -23,21 +23,22 @@ if (choice === "1") {
   }
 
 
-  const fromCurrency = prompt("Enter the currency you are converting from: ").toUpperCase();
-  const amount = parseFloat(prompt("\nEnter the amount you want to convert: "));
-  const toCurrency = prompt("Enter the currency you want to convert to: ").toUpperCase();
+  const fromCurrency = input("Enter the currency you are converting from: ").toUpperCase();
+  const amount = parseFloat(input("\nEnter the amount you want to convert: "));
+  const toCurrency = input("Enter the currency you want to convert to: ").toUpperCase();
 
 
   if (!exchangeRates[fromCurrency] || !exchangeRates[toCurrency]) {
     console.log("Invalid currency code. Please choose from the list above.");
-  } else {
-    const amountInUSD = amount / exchangeRates[fromCurrency];
-    const convertedAmount = amountInUSD * exchangeRates[toCurrency];
-
-    console.log(`${amount} ${fromCurrency} = ${convertedAmount.toFixed(2)} ${toCurrency}`);
+  return;
   }
+
+  const convertedAmount = (amount / exchangeRates[fromCurrency]) * exchangeRates[toCurrency];
+  console.log(`${amount} ${fromCurrency} = ${convertedAmount.toFixed(2)} ${toCurrency}`);
+
 } else if (choice === "2") {
-  console.log("Exiting program. Goodbye!");
+  console.log("Exiting. Goodbye!");
+  process.exit();
 } else {
-  console.log("Invalid choice. Please restart and select 1 or 2.");
+  console.log("Invalid choice. Please restart and select a valid option.");
 }
