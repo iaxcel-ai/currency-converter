@@ -24,7 +24,7 @@ while (true) {
     }
 
     const fromCurrency = input("Currency to convert FROM: ").toUpperCase();
-    const amount = parseFloat(input("\nAmount to convert: "));
+    const amount = parseFloat(input("Amount to convert: "));
     const toCurrency = input("Currency to convert TO: ").toUpperCase();
 
 
